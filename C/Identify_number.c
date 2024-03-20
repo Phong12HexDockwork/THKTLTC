@@ -45,7 +45,6 @@ int main() {
     int number_raw;
   
     //(1) [raw number] will optimized for another form that [a] [b] [c] [d] in plot and detected which not affected
-    printf("Enter a number: ");
     scanf("%d", &number_raw);
 
     //(2) After matching final array of [abcd], its will identify for each number constant in plot [a] => ?? [b] => ?? ...
