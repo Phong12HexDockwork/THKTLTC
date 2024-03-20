@@ -21,14 +21,19 @@ number separate (int n_raw) {
 
 //(2) Identify the number [a][b][c][d] for 1..9 have the alphabet word of that in vietnamese. ex:[a] = 1 = mot; [b] = 2 = hai;... 
 void identify (int id_number[4], int index){
-    const char* counting_number[8] = {"hai ","ba ","bon ","nam ","sau ","bay ","tam ","chin "};
     
     for (index; index > 0; index--){
         switch (id_number[index]){
-
             case 0: if (index != 1) {cout << "khong "; break;} else break;
             case 1: if (index != 2) {cout << "mot ";   break;} else break;
-            default: cout << counting_number[index - 1];
+            case 2: printf("hai "); break;
+            case 3: printf("ba ");  break;
+            case 4: printf("bon "); break;
+            case 5: printf("nam "); break;
+            case 6: printf("sau "); break;
+            case 7: printf("bay "); break;
+            case 8: printf("tam "); break;
+            case 9: printf("chin ");break;
 
         }
 //(2.1)This case will show the unit of [a][b][c][d]. the first one ex: n tram means [n00] n nghin [n000] ...
