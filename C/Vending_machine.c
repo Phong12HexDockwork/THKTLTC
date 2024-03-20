@@ -53,10 +53,8 @@ int main() {
     menu_pick_afford: menu_afford(balance_money, counting_cart, menu_type_price, menu_shopping_cart);
             scanf("%d", &menu_id);
 
-            if (menu_id == 0) {goto menu_ending_systems;
-            } else {balance_money -= menu_type_price[menu_id - 1]; counting_cart[menu_id - 1]++; menu_cart(counting_cart, menu_shopping_cart);}
-            if (balance_money >= 5000) {goto menu_pick_afford;
-            } else {goto menu_unable;}
+            if (menu_id == 0) {goto menu_ending_systems;} else {balance_money -= menu_type_price[menu_id - 1]; counting_cart[menu_id - 1]++; menu_cart(counting_cart, menu_shopping_cart);}
+            if (balance_money >= 5000) {goto menu_pick_afford;} else {goto menu_unable;}
     //3. All situations when user click zero button, it will send command to this which can break this program any times. 
     menu_ending_systems: menu_exit(balance_money);
 
