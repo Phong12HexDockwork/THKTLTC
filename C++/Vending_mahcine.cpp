@@ -11,11 +11,9 @@ void menu_main () {
     cout << "Nhap So tien: ";
 }
 void menu_unable (int menu_unable_money) {  
-
     cout << "So tien hien tai la: "<< menu_unable_money << endl << "   Khong du tien! "<< endl << "1. Them Tien"<< endl << "0. Thoat" << endl;
 }
 void menu_afford (int menu_afford_money, int counting_cart[3],int menu_type_price[3], const char* menu_shopping_cart[3]) {
-
     cout << endl <<"So tien hien tai: " << menu_afford_money << endl <<" Lua chon: "<< endl;
     for (int i = 0; i < 4;i++) { if ((counting_cart[i] < 3) && (menu_afford_money >= menu_type_price [i])) {cout << i+1 << ".  " << menu_shopping_cart[i] << "     " << menu_type_price[i]<< endl; } }
     cout << "0.   Thoat" << endl;
@@ -51,7 +49,7 @@ int main () {
                 if (menu_id == 0) {goto menu_ending_systems;} 
                 else {balance_money = balance_money - menu_type_price[menu_id - 1]; ++counting_type[menu_id-1]; menu_cart(counting_type,menu_shopping_cart);}
                 if (balance_money >= 5000) {goto menu_pick_afford;} else goto menu_unable;
-
+    
     menu_ending_systems:menu_exit (balance_money);
 
     return 0; 
