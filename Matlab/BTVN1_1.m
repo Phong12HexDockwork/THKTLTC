@@ -14,7 +14,3 @@ function sumOddNumbers(n)
   % Hiển thị kết quả
   fprintf('Tổng các số lẻ từ 1 đến %d là: %d\n', n, sum);
 end
-
-% Gọi hàm với giá trị n
-n = 10;
-sumOddNumbers(n);
