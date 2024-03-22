@@ -1,3 +1,4 @@
-# THKTLTC
+Copyright © 2024 Pham Thanh Phong 
+University of Science - Vietnam National University 
 
-@Copy Right By Pham Thanh Phong
+
