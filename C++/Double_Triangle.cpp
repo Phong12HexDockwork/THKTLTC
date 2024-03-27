@@ -18,7 +18,7 @@ void tam_giac_tren () {
 
         cout << endl << endl;
     }
-    return 0;
+    return ;
 }
 
 void duong_thang_giua () {
@@ -29,7 +29,7 @@ void duong_thang_giua () {
     for (int j = 1; j < 4 ; j++) cout << " ";
     cout << "*" << endl << endl;
     }   
-    return 0;
+    return ;
 }
 
 void tam_giac_duoi () {
@@ -48,7 +48,7 @@ void tam_giac_duoi () {
 
         cout << endl << endl;
     }
-    return 0;
+    return ;
 }
 
 int main () { 
