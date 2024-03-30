@@ -29,39 +29,37 @@ number separate (int n_raw) {
 //(2.1) Identify the number [a][b][c][d] for 1..9 have the alphabet word of that in vietnamese. ex:[a] = 1 = mot; [b] = 2 = hai;... 
 void identify (int id_number[4], int index){
     
-    for (index; index > 0; index--){
-            // (2.1.1) Each case [c] [d] will compiling for each that can be happened with maintains 
-            if ( (index == 2 && id_number[index] == 1 && id_number[index - 1] == 0)  ) {     // Case situation [1][0] => [muoi] 
+            for (index; index > 0; index--){
+                    // (2.1.1) Each case [c] [d] will compiling for each that can be happened with maintains 
+                    if ( (index == 2 && id_number[index] == 1 && id_number[index - 1] == 0)  ) {     // Case situation [1][0] => [muoi] 
 
-                                                    cout <<" muoi " ; break;}                                                else  
+                                                            cout <<" muoi " ; break;}                                                else  
 
-            if ( (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] == 0) ) {  // Case situation [n][0] => [n][muoi]
+                    if ( (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] == 0) ) {  // Case situation [n][0] => [n][muoi]
 
-                                                    cout << definite_number [id_number[index]] << " muoi "; break;}          else 
+                                                            cout << definite_number [id_number[index]] << " muoi "; break;}          else 
 
-            if ( (index == 2 && id_number[index] == 1 && id_number[index - 1] != 0)) { // Case situation [1][n] => [muoi] [n]
+                    if ( (index == 2 && id_number[index] == 1 && id_number[index - 1] != 0)) { // Case situation [1][n] => [muoi] [n]
 
-                                                    cout << " muoi " << definite_number [id_number[index - 1]]; break;}       else 
+                                                            cout << " muoi " << definite_number [id_number[index - 1]]; break;}       else 
 
-            if ( (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] != 0) ) { //Case situation [n][n-1]
-                                                
-                                                    cout << definite_number [id_number[index]] << " muoi " << definite_number[id_number[index - 1]] ; break;}      else 
+                    if ( (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] != 0) ) { //Case situation [n][n-1]
+                                                        
+                                                            cout << definite_number [id_number[index]] << " muoi " << definite_number[id_number[index - 1]] ; break;}      else 
 
-            if ( (index == 2 && id_number[index] == 0 && id_number[index - 1] != 0 )){ //Case situation [0] [n] => [khong] [n_final]
+                    if ( (index == 2 && id_number[index] == 0 && id_number[index - 1] != 0 )){ //Case situation [0] [n] => [khong] [n_final]
 
-                                                    cout << definite_number [id_number[index]] << " " << definite_number [id_number[index - 1]]; break; }          else 
-            
-            cout << definite_number [id_number[index]] << " ";
-            
-        switch (index){
-                        case 4: cout << "nghin "; break; 
-                        case 3: cout << "tram " ; break; 
-                        case 2: cout << "muoi " ; break; 
-        }
-    }
+                                                            cout << definite_number [id_number[index]] << " " << definite_number [id_number[index - 1]]; break; }          else 
+                    
+                    cout << definite_number [id_number[index]] << " ";
+                    
+            switch (index){
+                                case 4: cout << "nghin "; break; 
+                                case 3: cout << "tram " ; break; 
+                                case 2: cout << "muoi " ; break; 
+                }
+            }
 }
-
-    
 
 int main () {
 
