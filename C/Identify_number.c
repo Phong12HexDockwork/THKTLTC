@@ -1,14 +1,16 @@
 #include <stdio.h>
 
-//(1) Settings for each value will show in case of matching solutions 
+const char* definite_number[10] = {"khong","mot","hai","ba","bon","nam","sau","bay","tam","chin"};
+
+// (1) Structure to hold separated digits and index
 struct number {
     int index;
     int number_settings[4];
 };
 
-//(1.1) Need to value is array of [raw_number] transformed [a][b][c][d] and how many value really exits in that array - length of that piece 
+// (1.1) Separate a four-digit number into digits and store in number structure
 struct number separate(int n_raw) {
-    struct number n_separated = {0};  // Initialize index to 0
+    struct number n_separated = {0};
     while (n_raw > 0) {
         n_separated.index++;
         n_separated.number_settings[n_separated.index] = n_raw % 10;
@@ -17,39 +19,52 @@ struct number separate(int n_raw) {
     return n_separated;
 }
 
-//(2) Identify the number [a][b][c][d] for 1..9 have the alphabet word of that in vietnamese. ex:[a] = 1 = mot; [b] = 2 = hai;... 
-void identify(int id_number[], int index) {
-    for (; index > 0; index--) {
-        switch (id_number[index]) {
-            case 0: if (index != 1) { printf("khong "); break;}break;
-            case 1: if (index != 2) { printf("mot ");   break;}break;
-            case 2: printf("hai "); break;
-            case 3: printf("ba ");  break;
-            case 4: printf("bon "); break;
-            case 5: printf("nam "); break;
-            case 6: printf("sau "); break;
-            case 7: printf("bay "); break;
-            case 8: printf("tam "); break;
-            case 9: printf("chin ");break;
+// (2.1) Identify the number [a][b][c][d] for 1..9 have the alphabet word of that in vietnamese. ex:[a] = 1 = mot; [b] = 2 = hai;... 
+void identify(int id_number[4], int index) {
+    for (index; index > 0; index--) {
+        // Each case [c] [d] will be compiled for each that can happen with maintenance
+        if (index == 2 && id_number[index] == 1 && id_number[index - 1] == 0) { // Case situation [1][0] => [muoi]
+            printf(" muoi ");
+            break;
+        } else if (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] == 0) { // Case situation [n][0] => [n][muoi]
+            printf("%s muoi ", definite_number[id_number[index]]);
+            break;
+        } else if (index == 2 && id_number[index] == 1 && id_number[index - 1] != 0) { // Case situation [1][n] => [muoi] [n]
+            printf(" muoi %s", definite_number[id_number[index - 1]]);
+            break;
+        } else if (index == 2 && id_number[index] != 1 && id_number[index] != 0  && id_number[index - 1] != 0) { // Case situation [n][n-1]
+            printf("%s muoi %s", definite_number[id_number[index]], definite_number[id_number[index - 1]]);
+            break;
+        } else if (index == 2 && id_number[index] == 0 && id_number[index - 1] != 0 ) { // Case situation [0] [n] => [khong] [n_final]
+            printf("%s %s", definite_number[id_number[index]], definite_number[id_number[index - 1]]);
+            break;
         }
-//(2.1)This case will show the unit of [a][b][c][d]. the first one ex: n tram means [n00] n nghin [n000] ...
-//(2.1*)But ir remains notice that when [c][d] = {0,1}, [muoi] is not allowed to [0] output [khong] and otherwise [mot] output be[muoi]
-        if (index == 4) { printf("nghin ");} 
-        else if (index == 3) { printf("tram ");} 
-        else if (index == 2 && id_number[index] != 0) {printf("muoi "); }
+        printf("%s ", definite_number[id_number[index]]);
+        switch (index) {
+            case 4:
+                printf("nghin ");
+                break;
+            case 3:
+                printf("tram ");
+                break;
+            case 2:
+                printf("muoi ");
+                break;
+        }
     }
 }
 
 int main() {
-    //Input from beginning  the code with [raw number] = [abcd] 
+    // Input from the beginning of the code with [raw number] = [abcd] 
     int number_raw;
-  
-    //(1) [raw number] will optimized for another form that [a] [b] [c] [d] in plot and detected which not affected
+    printf("Vui long nhap : ");
     scanf("%d", &number_raw);
 
-    //(2) After matching final array of [abcd], its will identify for each number constant in plot [a] => ?? [b] => ?? ...
-    struct number n_separated = separate(number_raw);
+    // (1) [raw number] will be optimized for another form that [a] [b] [c] [d] in plot and detected which not affected
+    struct number n_separated = separate(number_raw); 
+
+    // (2) After matching the final array of [abcd], it will identify for each number constant in the plot [a] => ?? [b] => ?? ...
     identify(n_separated.number_settings, n_separated.index);
-  
+
     return 0;
 }
